@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="chat.css" type="text/css">
+
+ <!--
+    <style type="text/css" media="screen">
+        @import url(/admin/styles/sorttable.css);
+        @import url(/admin/styles/type-settings.css);
+        @import url(/admin/styles/site.css);
+        @import url(/admin/styles/prettify.css);
+    </style>
+-->
+
+	<title>Chat Example Using Stomp Over WebSocket</title>
+    <link rel="stylesheet" type="text/css" href="chat.css"/>
+    <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src='stomp.js'></script>
+    <script type="text/javascript" src='chat.js'></script>
+    <script type="text/javascript" >
+        $(document).ready(function() {
+        var supported = ("WebSocket" in window);
+        if(!supported) {
+        var msg = "Your browser does not support Web Sockets. This example will not work properly.<br>";
+        msg += "Please use a Web Browser with Web Sockets support (WebKit or Google Chrome).";
+        $("#connect").html(msg);
+        }
+        });
+    </script>
+</head>
+<body>
+    <div id='connect'>
+        <form id='connect_form'>
+            <dl>
+                <dt><label for=connect_url>Server</label></dt>
+                <dd><input name=url id='connect_url' value='localhost'></dd>
+                <dt><label for=scope>Scope</label></dt>
+                <dd><input id='scope' placeholder="Scope" value="DEFAULT_SCOPE"></dd>
+                <dt>&nbsp;</dt>
+                <dd><input type=submit id='connect_submit' value="Connect"></dd>
+            </dl>
+        </form>
+
+    </div>
+
+    <form id='send_form'>
+        <button type="button" id="send_fake_smile_welcome">Fake Smile Welcome</button>
+        <button type="button" id="send_genuine_smile_welcome">Genuine Smile Welcome</button>
+    </form>
+
+    <div id="disconnect">
+        <form id='disconnect_form'>
+            <input type=submit id='disconnect_submit' value="Disconnect">
+        </form>
+    </div>
+    <div id="messages">
+    </div>
+
+    <pre id="debug"></pre>
+
+</p>
+
+</body>
+</html>
